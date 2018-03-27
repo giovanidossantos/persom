@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pagamento" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4f0faa6-0fbc-4d83-9613-0dd0bc71fdd7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SQL" class="java.lang.String"/>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="cpf" class="java.lang.String"/>
+	<parameter name="municipal" class="java.lang.String"/>
+	<parameter name="estadual" class="java.lang.String"/>
+	<parameter name="produto" class="java.lang.String"/>
+	<parameter name="valortotal" class="java.math.BigDecimal"/>
+	<parameter name="valorfinal" class="java.math.BigDecimal"/>
+	<parameter name="valor2" class="java.math.BigDecimal"/>
+	<parameter name="resultado" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA["$P!{SQL}"]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="269" splitType="Stretch">
+			<textField>
+				<reportElement x="35" y="198" width="196" height="20" uuid="890f98c2-b83b-415b-88a4-3c111b33d783"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="198" width="135" height="20" uuid="f32d48ef-d5cc-4c56-b0a9-cdbaa86820c1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="218" width="145" height="20" uuid="3fc5affa-b7f3-41a8-a26e-8507783fff88"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{municipal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="218" width="123" height="20" uuid="b79c1c12-03f5-488c-a32a-30d5390643a0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{estadual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="198" width="35" height="20" uuid="f6c6b479-71a4-4477-80eb-f9f45648b01c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="218" width="122" height="20" uuid="b51642a5-9cff-42fa-ba90-d33034cd46d2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[INSCRIÇÃO MUNICIPAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="198" width="119" height="20" uuid="a84e406d-3de3-4247-a712-f99cb70c57af"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[CPF/CNPJ DO CLIENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="218" width="119" height="20" uuid="3c81f6b1-691e-4113-ae8f-e740d85920fa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[INSCRIÇÃO ESTADUAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="0" width="80" height="20" uuid="dcf3c6ac-e5de-4aef-afad-3396c5856ea0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[PERSOM]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="120" width="58" height="20" uuid="c4a741c8-3e22-4d34-a4ce-8fa302be69e7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement x="58" y="120" width="71" height="20" uuid="4a87ae02-5daa-48d1-8507-8933bc1836b9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="70" y="154" width="397" height="20" uuid="90cefeb4-6bab-41fd-9564-9a3570acb941"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[******************************  NÃO É DOCUMENTO FISCAL ******************************]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="23" uuid="63bcd4fc-d8ba-4221-b024-64db6146f273"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="89" height="23" uuid="c6f96365-89c1-4cf1-a929-a8c8171413ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="0" width="62" height="23" uuid="1560d629-1e3a-428f-ae3f-f1ac05a7cb6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[MODELO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="0" width="73" height="23" uuid="c72cff4e-1194-469e-b914-bf0bdb1a63b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="0" width="76" height="23" uuid="b2af33a9-74ca-4eba-a28f-9de8e8a0362a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[VALORUNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="0" width="43" height="23" uuid="682e55b6-0546-4154-ab4d-87f6ad31364f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[QTD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="0" width="64" height="23" uuid="29f34402-5b12-4c4f-89ba-d98f967dc8a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[GARANTIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="462" y="0" width="70" height="23" uuid="7e395bbc-fa72-435a-95f4-037d662804b8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[VALORITEM]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="112" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="462" y="51" width="70" height="20" uuid="b81fc386-585d-41ff-b0a2-f8a891da4536"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorfinal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="462" y="71" width="70" height="20" uuid="e0fa55df-a08b-4e5d-a7a7-819dca542dd7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valor2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="462" y="91" width="70" height="20" uuid="7ecac0cc-57e9-4638-bd20-ffff33b6ecd8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{resultado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="89" height="20" uuid="eb7cc3d3-8d9e-4fbf-8e22-f19c2e57f123"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{produto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="462" y="0" width="70" height="20" uuid="df29f9d6-6887-4e2f-b8d6-2bb24e5c3dab"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valortotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="408" y="51" width="54" height="20" uuid="2732c48a-e66f-4a97-84f9-fe416bba8dfb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="71" width="54" height="20" uuid="27e011f8-d407-4b20-9abb-69bf3f851d84"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[DINHEIRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="91" width="54" height="20" uuid="ecb621c8-19be-400d-83ea-3e13e5ce0cfe"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[TROCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="20" uuid="a218b151-77eb-4c54-a56d-076285b1b510"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
