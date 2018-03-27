@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vendas" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13c04b33-83c5-4d59-b772-e12f478427b6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="servico" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="buy" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipooperacao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     v.`NomeProduto` AS v_NomeProduto,
+     v.`ModeloProduto` AS v_ModeloProduto,
+     v.`MarcaProduto` AS v_MarcaProduto,
+     v.`PrecoUnit` AS v_PrecoUnit,
+     v.`Quantidade_Produto` AS v_Quantidade_Produto,
+     v.`Valor_Total` AS v_Valor_Total,
+     v.`Garantia` AS v_Garantia,
+     v.`idProduto` AS v_idProduto,
+     c.`CPF_CNPJ` AS c_CPF_CNPJ,
+     c.`Nome_Razao` AS c_Nome_Razao,
+     c.`Inscricao_Municipal` AS c_Inscricao_Municipal,
+     c.`Inscricao_Estadual` AS c_Inscricao_Estadual,
+     p.`Valor_Total` AS p_Valor_Total,
+     p.`Valor_Recebido` AS p_Valor_Recebido,
+     p.`Troco` AS p_Troco
+FROM
+    `Pagamento` p  INNER JOIN `cliente` c ON p.`Cliente_CPF_CNPJ` = c.`CPF_CNPJ`
+     INNER JOIN `Vendas` v ON c.`CPF_CNPJ` = v.`Cliente_CPF_CNPJ`
+WHERE
+      Ordem_Servico = $P{servico}
+ AND
+     OrdemPagamento = $P{buy}
+ AND
+    Tipo_Operacao = $P{tipooperacao}]]>
+	</queryString>
+	<field name="v_NomeProduto" class="java.lang.String"/>
+	<field name="v_ModeloProduto" class="java.lang.String"/>
+	<field name="v_MarcaProduto" class="java.lang.String"/>
+	<field name="v_PrecoUnit" class="java.math.BigDecimal"/>
+	<field name="v_Quantidade_Produto" class="java.lang.Integer"/>
+	<field name="v_Valor_Total" class="java.math.BigDecimal"/>
+	<field name="v_Garantia" class="java.lang.String"/>
+	<field name="v_idProduto" class="java.lang.Integer"/>
+	<field name="c_CPF_CNPJ" class="java.lang.String"/>
+	<field name="c_Nome_Razao" class="java.lang.String"/>
+	<field name="c_Inscricao_Municipal" class="java.lang.String"/>
+	<field name="c_Inscricao_Estadual" class="java.lang.String"/>
+	<field name="p_Valor_Total" class="java.math.BigDecimal"/>
+	<field name="p_Valor_Recebido" class="java.math.BigDecimal"/>
+	<field name="p_Troco" class="java.math.BigDecimal"/>
+	<title>
+		<band height="269" splitType="Stretch">
+			<textField>
+				<reportElement x="45" y="198" width="215" height="20" uuid="d3a69be4-6dec-4794-abb5-1c9e21b499d5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_Nome_Razao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="198" width="151" height="20" uuid="68791fd1-3ba1-4d77-bbb4-660f0c8d016c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_CPF_CNPJ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="218" width="136" height="20" uuid="922e7e1c-a08d-4193-ae06-27cf009311e7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_Inscricao_Municipal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="218" width="139" height="20" uuid="f2a4d9de-a023-4475-b864-083fe53e4ec9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_Inscricao_Estadual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="198" width="43" height="20" uuid="9e5beb07-7f75-4bcc-a774-62eca870c0b3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="218" width="122" height="20" uuid="f3d5fb07-01d5-4580-a7a3-7c535ddb3e5b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[INSCRIÇÃO MUNICIPAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="198" width="121" height="20" uuid="949762e7-ecf5-41de-b247-b96d81e33a6c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[CPF/CNPJ DO CLIENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="218" width="121" height="20" uuid="f373a843-135b-44f3-a7f2-81cab4759645"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[INSCRIÇÃO ESTADUAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="0" width="80" height="20" uuid="77514ee5-a5db-4cec-a146-410bfeb049e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[PERSOM]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="2" y="124" width="58" height="20" uuid="b077fd45-e3f9-468c-881f-f52496806bee"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement x="60" y="124" width="71" height="20" uuid="80341ce2-9094-49a8-89f0-ba295c8393d9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="70" y="154" width="397" height="20" uuid="7ae734c4-c15a-4287-8a9c-be686a5157f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[******************************  NÃO É DOCUMENTO FISCAL ******************************]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="20" uuid="97fc6364-64ae-4f72-a7a9-9be6069afcd4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="117" height="20" uuid="618baa98-66b4-4b15-b722-d2fcbb990983"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="0" width="77" height="20" uuid="e74d1446-62c2-466b-bfb3-647ce92219ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[MODELO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="0" width="82" height="20" uuid="76180430-900f-4149-bad2-8c8269c5c648"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="0" width="72" height="20" uuid="1c419cdd-b10c-4c58-822c-536b8a6b8ecb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[VALORUNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="0" width="43" height="20" uuid="716244e4-52ee-4637-ba4f-52678576cac1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[QTD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="0" width="64" height="20" uuid="f91cfa9a-8fb1-4a99-b6f5-68e244b0f71f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[GARANTIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="1" width="72" height="20" uuid="5431d217-8ef6-4e3c-8f7c-350da13f99cc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[VALORITEM]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="45" height="22" uuid="f764b2ee-db04-48dc-b62e-33c619a37312"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_idProduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="1" width="117" height="21" uuid="141faa03-62d3-4bf1-a6b2-f31dfcb46897"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_NomeProduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="162" y="0" width="77" height="22" uuid="853d48c7-6d48-4ac0-a324-039d8765e165"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ModeloProduto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="500" y="1" width="72" height="21" uuid="909eaf55-f9d9-4ff8-809f-b92cb898a329"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_Valor_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="393" y="1" width="43" height="21" uuid="7554ca64-04cb-4473-9d1d-bb2ac527b541"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_Quantidade_Produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="1" width="64" height="21" uuid="8bf66a95-89f9-40df-8729-c884b5e688fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_Garantia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="321" y="1" width="72" height="21" uuid="fa09e98b-4787-417a-a9d3-0d6ca9c275f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_PrecoUnit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="1" width="82" height="21" uuid="15ec3527-1368-4319-b2be-846ea3dcb57a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_MarcaProduto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="85" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="500" y="24" width="72" height="20" uuid="337858de-e39b-4fcc-86b3-46f0c9b0ce63"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{p_Valor_Total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="500" y="44" width="72" height="20" uuid="79df872e-c6c5-49f6-a7e9-06b89893b6ab"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{p_Valor_Recebido}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="500" y="64" width="72" height="20" uuid="fd762126-4daa-400c-94ca-cda2474be12b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{p_Troco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="446" y="44" width="54" height="20" uuid="f10b7d19-407b-4ab0-a89f-719e67d6c324"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[DINHEIRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="64" width="54" height="20" uuid="d63b7148-4033-4a91-b028-dfb7755f3433"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[TROCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="24" width="54" height="20" uuid="07953eed-a698-4918-8003-0bf392068132"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
